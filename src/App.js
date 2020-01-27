@@ -1,5 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
+import {BtCounter} from './no-hooks/BtCounter';
+import {GlobalCounter} from './no-hooks/GlobalCounter';
 import './App.css';
 
 function App() {
@@ -12,7 +14,9 @@ function App() {
         </span>
       </header>
       <main>
-        Components go here
+        <BtCounter />
+        <hr />
+        <GlobalCounter />
       </main>
     </div>
   );
