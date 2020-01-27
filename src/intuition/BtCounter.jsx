@@ -1,14 +1,15 @@
 import React from 'react';
-import {MyReact} from './myHooks';
+import {initHooks} from './myHooks';
+const MyHooks = initHooks();
 
 /**
  * What if we wanted to stay only with the render function (a-la a functional component) but still have state?
- * The only reason it is still a class is that we can't use 'forceUpdate' on a functional component
+ * The only reason it is still a class is that we can't use 'forceUpdate' on a functional component (but React can :))
  */
 export class BtCounter extends React.Component {
     render() {
         console.log('rendering BtCounter');
-        const [sum, setSum] = MyReact.useSingleState(0);
+        const [sum, setSum] = MyHooks.useSingleState(0);
         // Notice the force updates. Can react do it under the hood whenever 'setSum' is called ??
         return (
             <React.Fragment>
@@ -25,11 +26,11 @@ export class BtCounter extends React.Component {
 export class BtCounterMulti extends React.Component {
     render() {
         console.log('rendering BtCounterMulti');
-        const [sum1, setSum1] = MyReact.useState(0);
-        const [sum2, setSum2] = MyReact.useState(100);
-        const [sum3, setSum3] = MyReact.useState(1000);
+        const [sum1, setSum1] = MyHooks.useState(0);
+        const [sum2, setSum2] = MyHooks.useState(100);
+        const [sum3, setSum3] = MyHooks.useState(1000);
         // Can react do this reset under the hood?
-        MyReact.resetIdx();
+        MyHooks.resetIdx();
         return (
             <React.Fragment>
                 <p>Sum1 is at: <em>{sum1}</em></p>

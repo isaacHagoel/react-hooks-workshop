@@ -1,13 +1,12 @@
 /*
- * This implementation follows the 'module pattern' which is quite common in Javascript (regardless of React).
+ * This implementation loosely follows the 'module pattern' which is quite common in Javascript (regardless of React).
  */
-export const MyReact = function() {
+const makeHooks = function() {
     let _singleVal;
     let _vals = [], idx;
     return {
       /* This is a simple state management mechanism that supports a single state object, what React actually has is more
        * similar to the one below but this is easier to understand as a first step.
-       * It is worth noting that it is a single state per importer but it is NOT a singleton (each importer gets a new isolated scope)
        */
       useSingleState: function (initialValue) {
           _singleVal = _singleVal || initialValue;
@@ -45,4 +44,11 @@ export const MyReact = function() {
         idx = undefined;
       }
     };
-}();
+};
+
+/* In order to not expose our internals and allow each importer to have its own context.
+ * Notice that two instances of the same component will share the state which is NOT what we want (and not what React does),
+ * this is just for intuition (we can make a context per instance by wrapping components instantiation, which React controls)
+ */
+export const initHooks = () => makeHooks();
+

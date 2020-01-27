@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import {BtCounter, BtCounterMulti} from './intuition/BtCounter';
-import {GlobalCounter} from './no-hooks/GlobalCounter';
+// import {GlobalCounter} from './no-hooks/GlobalCounter';
 import './App.css';
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
       </header>
       <main>
         <BtCounter />
+        <hr />
         <BtCounterMulti />
         <hr />
         {/*<GlobalCounter />*/}
