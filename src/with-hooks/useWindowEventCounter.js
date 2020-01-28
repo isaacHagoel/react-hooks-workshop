@@ -1,18 +1,22 @@
 import {useState, useEffect} from 'react';
 
-export function useWindowEventCounter(eventName) {
+export function useWindowEventCounter(eventName, isActive = true) {
     const [counter, setCounter] = useState(0);
 
     function increment() {
         setCounter(counter => counter + 1);
     }
     useEffect(() => {
-        console.log(`running the use effect callback for ${eventName}`);
-        document.addEventListener(eventName, increment);
+        if (isActive) {
+            console.log(`running the use effect callback for ${eventName}`);
+            document.addEventListener(eventName, increment);
+        }
         return () => {
-            console.log(`running the effect cleanup for ${eventName}`);
-            document.removeEventListener(eventName, increment);
+            if (isActive) {
+                console.log(`running the effect cleanup for ${eventName}`);
+                document.removeEventListener(eventName, increment);
+            }
         };
-    }, [eventName]);
+    }, [eventName, isActive]);
     return counter;
 }
