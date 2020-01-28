@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
-import {BtCounter, BtCounterMulti} from './with-hooks/BtCounter';
+// import {BtCounter, BtCounterMulti} from './with-hooks/BtCounter';
 import {GlobalCounter} from './with-hooks/GlobalCounter';
+import {GlobalCounterWithSelect} from './with-hooks/GlobalCounterWithSelect';
 import './App.css';
 
 function App() {
@@ -14,11 +15,13 @@ function App() {
         </span>
       </header>
       <main>
-        <BtCounter />
-        <hr />
-        <BtCounterMulti />
-        <hr />
+        {/*<BtCounter />*/}
+        {/*<hr />*/}
+        {/*<BtCounterMulti />*/}
+        {/*<hr />*/}
         <GlobalCounter />
+        <hr />
+        <GlobalCounterWithSelect/>
       </main>
     </div>
   );
